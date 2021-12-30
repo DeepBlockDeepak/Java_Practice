@@ -21,6 +21,7 @@ So how does the public class get called?
 .toUpperCase() / .toLowerCase()
 
 String.valueOf(anIntVar)    String.valueOf(5.99) == "5.99"
+SomeString.compareTo(SomeOtherString)   // obtains alphabetical ordering of the two Strings (greater than, less than, or equal to 0)
 */
 
 
