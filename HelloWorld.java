@@ -27,6 +27,22 @@ SomeString.compareTo(SomeOtherString)   // obtains alphabetical ordering of the 
 
 public class HelloWorld{
 
+    int x = 5;
+
+    class Dog{
+        int y = 66;
+        int x;
+
+
+        // Not sure what this does?
+        public Dog(){
+            x = 515;
+            
+        }
+        
+    }
+
+
     public static void main(String[] args){
         
         /*
@@ -40,6 +56,9 @@ public class HelloWorld{
         System.out.println(String.format("The test_array has %d elements.", test_array.length));    //using `String.format()` as an `f` string idea
 
         array_printer(test_array);
+
+        Dog dog = new Dog();
+        System.out.println("\n" + dog.x);
 
     }
 
