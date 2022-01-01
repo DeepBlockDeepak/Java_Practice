@@ -25,22 +25,15 @@ SomeString.compareTo(SomeOtherString)   // obtains alphabetical ordering of the 
 */
 
 
-public class HelloWorld{
+class Dog{
 
     int x = 5;
 
-    class Dog{
-        int y = 66;
-        int x;
-
-
-        // Not sure what this does?
-        public Dog(){
-            x = 515;
-            
-        }
-        
+    // Not sure what this does? -> creates a class Object 
+    public Dog(){
+        x = 515;
     }
+    
 
 
     public static void main(String[] args){
