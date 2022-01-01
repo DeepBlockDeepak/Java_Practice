@@ -1,29 +1,34 @@
 // practice with classes
 
-class Cat{
-    // Instance fields:
-    String noise= "uninitialized";
-    int numLives = 9;
-   
-    // Constructor takes in one String parameter
-    public Cat(String animalNoise){
-        // Assign instance variable to parameter value:
-        noise = animalNoise;
+class BankAccount{
+    //
+    protected double balance;
+
+    public BankAccount(double balanceIn){
+        balance = balanceIn;
     }
-
-
-    public void namePrinter(){
-        System.out.println(noise);
-    }
-   
-    public static void main(String[] args){
-        // Send argument to constructor when creating an object:
-        Cat firstCat = new Cat("dafuq"); 
-        // Send argument to constructor when creating another object:
-        Cat secondCat = new Cat("mow");
-
-        firstCat.namePrinter(); // Prints: dafuq
-        secondCat.namePrinter(); // Prints: mow
+    
+    public void printBalance(){
+        System.out.println("Your account balance is $" + balance);
     }
 }
+
+
+class CheckingAccount extends BankAccount{
+    //
+    public CheckingAccount(double balance){
+        super(balance);
+    }
+    
+    @Override
+    public void printBalance(){
+        System.out.println("Your checking account balance is $" + balance);
+    }
+    
+    public static void main(String[] args){
+        BankAccount myCheckings = new CheckingAccount(5000);
+        myCheckings.printBalance();
+    }
+}
+
 
