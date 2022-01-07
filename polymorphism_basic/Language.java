@@ -33,7 +33,9 @@ class Language{
 
     Scanner myObj = new Scanner(System.in);
 
-    System.out.println("Enter new word order facts:");
+    System.out.print(
+      String.format("Enter new word order facts for %s:", this.name)
+    );
 
     String new_word_order_content = myObj.nextLine();
 

@@ -48,6 +48,7 @@ class Main{
         new_line_printer(2);
 
         burmese.new_word_order();
+        mandarin.new_word_order();
 
         
 
