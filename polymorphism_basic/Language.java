@@ -1,4 +1,7 @@
+import java.util.Scanner;
+
 class Language{
+  
   protected String name;
   protected int numSpeakers;
   protected String regionsSpoken;
@@ -12,33 +15,32 @@ class Language{
     this.wordOrder = wordOrder;
   }
 
- public void getInfo(){
+  public void getInfo(){
     System.out.println(
-      this.name + " is spoken by " + this.numSpeakers + " people mainly in " + this.regionsSpoken + "." + " The language follows the word order: " + this.wordOrder
+      this.name + " is spoken by " +
+      this.numSpeakers + " people mainly in " +
+      this.regionsSpoken + "." +
+      " The language follows the word order: " +
+      this.wordOrder
     );
   }
 
+  /**
+    * Based on https://www.w3schools.com/java/java_user_input.asp
+    *
+  */
+  public void new_word_order(){
 
-  public static void main(String[] args){
+    Scanner myObj = new Scanner(System.in);
 
-    Language hooplah = new Language("Hooplah", 500, "Bay Area, Deep Dirty South", "noun, verb, subject.");
-    Language mopan = new Mayan("Mopan", 600);
-    SinoTibetan mandarin = new SinoTibetan("Mandarin Chinese", 122);
-    SinoTibetan burmese = new SinoTibetan("Burmese", 333);
+    System.out.println("Enter new word order facts:");
 
+    String new_word_order_content = myObj.nextLine();
 
-    hooplah.getInfo();
-    System.out.println();
-
-    mopan.getInfo();
-    System.out.println();
-
-    mandarin.getInfo();
-    System.out.println();
-    burmese.getInfo();
-
+    this.wordOrder = new_word_order_content;
 
   }
+
 }
 
 
