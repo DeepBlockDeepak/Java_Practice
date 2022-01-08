@@ -67,10 +67,19 @@ class Main{
         else{
             obj_list[obj_choice].new_regions_spoken();
         }
-        
-
+    
     }
 
+    public static void add_new_object(Language[] obj_list){
+
+        /*
+        Separate options for Language(), Mayan(), and SinoTibetan() objects.
+
+        Language() objects have to be fully instantiated,
+        whereas the other 2 just need the first 2 attributes upon instantiation
+        */
+        
+    }
 
 
     public static int main_menu(){
@@ -80,7 +89,8 @@ class Main{
             "1.) Print the Object Names\n\t\t\t" +
             "2.) Get Info of Entire List\n\t\t\t" +
             "3.) Update an Object's 'Regions Spoken' attribute.\n\t\t\t" +
-            "4.) QUIT\n\n"
+            "4.) Add a new Object to the Language List.\n\t\t\t" +
+            "5.) QUIT\n\n"
         );
 
         int user_choice = Integer.valueOf(obtain_user_input());
@@ -123,6 +133,13 @@ class Main{
 
             break;
 
+        case 4:
+
+            /* Do OBJ adding stuff */
+
+
+            break;
+
         default:
             // POSSIBLY DO NOT NEED A BREAK WITHIN DEFAULT
             System.out.println("How did you get to the inner_menu() switch default?");
@@ -149,12 +166,12 @@ class Main{
         // var for the user's menu selection
         int user_choice = 0;
         
-        while(user_choice != 4){
+        while(user_choice != 5){
 
             user_choice = main_menu();
 
-            if(user_choice == 4){
-                System.out.println("Have a nice day.");
+            if(user_choice == 5){
+                System.out.println("\nHave a nice day.");
                 break;
                 
             }
