@@ -57,20 +57,20 @@ class Language{
 
     //Enter new word order facts for %s:
     System.out.println(
-      String.format("Here is %s.regionsSpoken:\n\t%s\n", this.name, this.regionsSpoken)
+      String.format("--Here is %s.regionsSpoken:--\n\t%s\n", this.name, this.regionsSpoken)
     );
 
  
  
     System.out.println(
-      String.format("Enter new Regions Spoken content for %s:", this.name)
+      String.format("--Enter new Regions Spoken content for %s:--", this.name)
 
     );
 
 
     this.regionsSpoken = obtain_user_input();
 
-    System.out.println("Regions Spoken has been overwritten for " + this.name + ".\n");
+    System.out.println("\n--Regions Spoken has been overwritten for " + this.name + ".--\n");
 
 
 
