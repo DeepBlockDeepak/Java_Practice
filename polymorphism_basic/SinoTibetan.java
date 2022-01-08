@@ -4,6 +4,7 @@ class SinoTibetan extends Language{
 
     super(name, numSpeakers, "Asia", "subject-object-verb");
 
+    // If statement looks for any string of 'chinese' in the initilization of the .name attribute
     if(this.name.toLowerCase().contains("Chinese".toLowerCase())){
       this.wordOrder = "subject-verb-object";
     }

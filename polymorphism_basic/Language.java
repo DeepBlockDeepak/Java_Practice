@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 class Language{
   
   protected String name;
@@ -15,6 +16,29 @@ class Language{
     this.wordOrder = wordOrder;
   }
 
+
+  /**
+  * Based on https://www.w3schools.com/java/java_user_input.asp
+  *
+  */
+  public String obtain_user_input(){
+
+      Scanner myObj = new Scanner(System.in);
+
+      String user_input = myObj.nextLine();
+
+      return user_input;
+
+  }
+
+  public static void new_line_printer(int num_new_lines){
+    for(int i = 0; i < num_new_lines; i++){
+        System.out.println();
+    }
+  }
+
+
+
   public void getInfo(){
     System.out.println(
       this.name + " is spoken by " +
@@ -25,24 +49,33 @@ class Language{
     );
   }
 
-  /**
-    * Based on https://www.w3schools.com/java/java_user_input.asp
-    *
-  */
-  public void new_word_order(){
 
-    Scanner myObj = new Scanner(System.in);
 
-    System.out.print(
-      String.format("Enter new word order facts for %s:", this.name)
+  public void new_regions_spoken(){
+    new_line_printer(1);
+
+
+    //Enter new word order facts for %s:
+    System.out.println(
+      String.format("Here is %s.regionsSpoken:\n\t%s\n", this.name, this.regionsSpoken)
     );
 
-    String new_word_order_content = myObj.nextLine();
+ 
+ 
+    System.out.println(
+      String.format("Enter new Regions Spoken content for %s:", this.name)
 
-    this.wordOrder = new_word_order_content;
+    );
+
+
+    this.regionsSpoken = obtain_user_input();
+
+    System.out.println("Regions Spoken has been overwritten for " + this.name + ".\n");
+
+
 
   }
-
+  
 }
 
 
