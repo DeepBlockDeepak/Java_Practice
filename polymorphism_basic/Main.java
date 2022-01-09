@@ -2,10 +2,14 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 
+/**
+Contains the driver script as well as useful methods.
+Some of the methods are identical to those defined in Language.java. I'm not sure how to resolve that redundancy.
+ */
 class Main{
 
     /**
-    get_all_info for calling .getInfo() on each Language() object in the array
+    get_all_info for calling .getInfo() method on each Language() object in the array
     */
     public static void get_all_info(ArrayList<Language> language_array){
         new_line_printer(1);
@@ -120,8 +124,6 @@ class Main{
 
     
 
-
-    
     public static void add_new_object(int obj_choice, ArrayList<Language> obj_list){
         
         // declare variables for the obj attributes
@@ -163,6 +165,10 @@ class Main{
     }
     
 
+
+    /**
+        Ask user for choice. Return that int value for processing.
+     */
     public static int main_menu(){
         
         System.out.println(
@@ -176,7 +182,6 @@ class Main{
 
         int user_choice = Integer.valueOf(obtain_user_input());
         
-
         return user_choice;
 
     }
@@ -219,9 +224,9 @@ class Main{
         
             System.out.println(
                 "\n\t\tWhich Object would you like to add?:\n\t\t\t" +
-                "1.) Language() \n\t\t\t" +
-                "2.) Mayan\n\t\t\t" +
-                "3.) SinoTibetan\n\t\t\t" +
+                "1.) Language (parent Class) \n\t\t\t" +
+                "2.) Mayan (child of Lang)\n\t\t\t" +
+                "3.) SinoTibetan (child of Lang)\n\t\t\t" +
                 "4.) Back to Main Menu\n\n"
             );
 
@@ -240,17 +245,31 @@ class Main{
 
         default:
             // POSSIBLY DO NOT NEED A BREAK WITHIN DEFAULT
-            System.out.println("How did you get to the inner_menu() switch default?");
+            System.out.println("\t***Choice Must be between [1-5]\n");
             break;
         }
     }
 
 
 
+    /**
+        1.) Hard Code some objects from the cwd .java files: Language() & SinoTibetan() class objects are created
+
+        2.) Store these objects in an ArrayList<Lanugage>. 
+
+        3.) The while() loop allows the user to interact with a Menu that provides multiple options:
+            i.) View the object names within the ArrayList<Language> language_list
+            ii.) View the full information of the objects' attributes within the language_list
+            iii.) Modify the contents of the .regionsSpoken attribute of any chosen Object within the language_list
+            iv.) Add a new Object (along with entering it's attribute values) to the language_list.
+                    * note: this option takes the user to a new menu where they can choose which Class Object to create:
+                            Language(), Mayan(), or SinoTibetan() .... or to quit this option and return to main menu
+            v.) Quit the program   
+     */
     public static void main(String[] args){
 
         /**
-        Create the instanced objects
+        Create the instanced objects, Mayan() and SinoTi
          */
         Language hooplah = new Language("Hooplah", 500, "Bay Area, Deep Dirty South","noun, verb, subject.");
         Language mopan = new Mayan("Mopan", 600);
@@ -258,19 +277,18 @@ class Main{
         SinoTibetan burmese = new SinoTibetan("Burmese", 333);
         
         
-        // Organize all objects in language_list[] for organization and modularity
-
-        //Language[] language_list = {hooplah, mopan, mandarin, burmese};
-        //List<Language> language_list = {hooplah, mopan, mandarin, burmese};
-
+        // Organize all objects in a Language ArrayList for organization and modularity throughout the script
+        // Declaring the data structure and then adding all the hard-coded Objects to it 
         ArrayList<Language> language_list = new ArrayList<Language>();
         language_list.add(hooplah);language_list.add(mopan); language_list.add(mandarin); language_list.add(burmese);
 
         // var for the user's menu selection
         int user_choice = 0;
         
+        // Continuous Loop for user interface from Terminal
         while(user_choice != 5){
 
+            // main_menu() allows the user to choose functionality
             user_choice = main_menu();
 
             if(user_choice == 5){
@@ -279,12 +297,10 @@ class Main{
                 
             }
 
+            // inner_menu() processes the user's selection and directs the function to be performed.
             inner_menu(user_choice, language_list);
             
-
-            
-        }       
-
+        }      
 
     }
 

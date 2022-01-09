@@ -31,7 +31,7 @@ class Language{
 
   }
 
-  public static void new_line_printer(int num_new_lines){
+  public void new_line_printer(int num_new_lines){
     for(int i = 0; i < num_new_lines; i++){
         System.out.println();
     }
@@ -53,7 +53,6 @@ class Language{
 
   public void new_regions_spoken(){
     new_line_printer(1);
-
 
     //Enter new word order facts for %s:
     System.out.println(
