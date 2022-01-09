@@ -31,6 +31,10 @@ class Language{
 
   }
 
+
+  /**
+    Simple printer from Main.java
+   */
   public void new_line_printer(int num_new_lines){
     for(int i = 0; i < num_new_lines; i++){
         System.out.println();
@@ -39,6 +43,9 @@ class Language{
 
 
 
+  /**
+    method allows the called object's attributes to display.
+   */
   public void getInfo(){
     System.out.println(
       this.name + " is spoken by " +
@@ -51,6 +58,9 @@ class Language{
 
 
 
+  /**
+      Allows the user to overwrite chosen object's .regionsSpoken attribute
+   */
   public void new_regions_spoken(){
     new_line_printer(1);
 
@@ -59,22 +69,16 @@ class Language{
       String.format("--Here is %s.regionsSpoken:--\n\t%s\n", this.name, this.regionsSpoken)
     );
 
- 
- 
+
     System.out.println(
       String.format("--Enter new Regions Spoken content for %s:--", this.name)
 
     );
 
-
     this.regionsSpoken = obtain_user_input();
 
     System.out.println("\n--Regions Spoken has been overwritten for " + this.name + ".--\n");
-
-
-
   }
-  
 }
 
 

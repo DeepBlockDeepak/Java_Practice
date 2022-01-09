@@ -8,10 +8,12 @@ Some of the methods are identical to those defined in Language.java. I'm not sur
  */
 class Main{
 
+
     /**
     get_all_info for calling .getInfo() method on each Language() object in the array
     */
     public static void get_all_info(ArrayList<Language> language_array){
+
         new_line_printer(1);
 
         for(Language obj: language_array){
@@ -21,6 +23,9 @@ class Main{
     }
 
 
+    /**
+    A simple line printer function
+     */
     public static void new_line_printer(int num_new_lines){
         for(int i = 0; i < num_new_lines; i++){
             System.out.println();
@@ -30,6 +35,8 @@ class Main{
 
     /**
     * Based on https://www.w3schools.com/java/java_user_input.asp
+
+    * Great for obtaining Command Line input from user. Can easily be converted to Integer with Integer.valueOf(return)
     *
     */
     public static String obtain_user_input(){
@@ -43,6 +50,10 @@ class Main{
 
     }
 
+
+    /**
+        Loops through the ArrayList<Language> and prints off the .name() attribute of each Object
+     */
     public static void print_obj_names(ArrayList<Language> obj_list){
         new_line_printer(1);
         System.out.println("The Languages are:\n");
@@ -55,11 +66,17 @@ class Main{
         }
     }
 
+
+    /**
+        After the user has selected the object to modify, they call the .new_regions_spoken() Lanugage() attrbute here via the 
+        ArrayList<Language> datastructure's .get() method
+     */
     public static void object_change_method(int obj_choice, ArrayList<Language> obj_list){
 
         // decrement obj_choice to achieve 0-indexing 
         obj_choice--;
 
+        // error checking for bad user-input
         if(obj_choice < 0 || obj_choice > (obj_list.size() - 1)){
             System.out.println(
                 String.format(
@@ -75,6 +92,11 @@ class Main{
     
     }
 
+
+
+    /**
+        Function which allows the user to create a new Langage() object. Returns said object
+     */
     public static Language language_obj_creator(){
 
         System.out.println("\nEnter a name for your new Language() Obj:\n\t");
@@ -96,6 +118,10 @@ class Main{
     }
 
 
+
+    /**
+        Allows user to return a new Mayan() object
+     */
     public static Mayan mayan_obj_creator(){
         System.out.println("\nEnter a name for your new Mayan() Obj:\n\t");
         String name = obtain_user_input();
@@ -109,6 +135,10 @@ class Main{
 
     }
 
+
+    /**
+        Allows user to return a new SinoTibetan() object
+     */
     public static SinoTibetan sino_tibetan_obj_creator(){
         System.out.println("\nEnter a name for your new SinoTibetan() Obj:\n\t");
         String name = obtain_user_input();
@@ -124,38 +154,40 @@ class Main{
 
     
 
+    /**
+        Function handles the user's choice from the inner_menu option #4: creating a new Language() object or Child-class
+     */
     public static void add_new_object(int obj_choice, ArrayList<Language> obj_list){
         
         // declare variables for the obj attributes
         String name, regionsSpoken, wordOrder;
         int numSpeakers;
 
+
         switch(obj_choice){
+        
+        // Choosing the Language() Object
         case 1:
             // instance a Language object
-            //  * need the String name, int numSpeakers, String regionsSpoken, String wordOrder
-        
             Language new_lang_obj = language_obj_creator();
             obj_list.add(new_lang_obj);
-
             break;
 
+        // Choosing the Mayan() Object
         case 2:
-            // instance a Mayan object
-            //  * need a String name, int numSpeakers
 
             Mayan new_mayan_obj = mayan_obj_creator();
             obj_list.add(new_mayan_obj);
-
             break;
 
+        // Choosing a SinoTibetan() object
         case 3:
 
             SinoTibetan new_sinotibetan_obj = sino_tibetan_obj_creator();
             obj_list.add(new_sinotibetan_obj);
-
             break;
 
+        // Error inputs & Quits handled here in default
         default:
             System.out.println("\n\tReturning to main menu.\n");
             break;
@@ -180,6 +212,7 @@ class Main{
             "5.) QUIT\n\n"
         );
 
+        // Type conversion of the string output from Scanner to the Integer type
         int user_choice = Integer.valueOf(obtain_user_input());
         
         return user_choice;
@@ -187,26 +220,29 @@ class Main{
     }
 
 
+    /**
+        The inner menu channels the user's main_menu() choice into function calls depending on the user_choice value 
+     */
     public static void inner_menu(int user_choice, ArrayList<Language> obj_list){
 
         // case 3, when the user wants to update an Obj attribute
         int update_obj_choice;
         // for case 4, when the user wants to create a new Obj
-        int new_object_choice = 0;
+        int new_object_choice;
 
         switch(user_choice){
+        // Where user wants to print each .name from the list of objects
         case 1:
             print_obj_names(obj_list);
-
             break;
         
+        // Choosing to print off all attributes of every object in the list
         case 2: 
-
             //call this method to get all info
             get_all_info(obj_list);
-
             break;
-        
+
+        // Overwriting an existing object's .regionsSpoken attribute with new user-inputted material
         case 3:
 
             new_line_printer(2);
@@ -214,12 +250,16 @@ class Main{
                 "--------- Which object's 'regionsSpoken' would you like to modify ---------?"
             );
 
+            // displays choices for the user via a List printed menu. 
             print_obj_names(obj_list);
+            // User choice serves as an indexing value to select the appropriate object
             update_obj_choice = Integer.valueOf(obtain_user_input());
-            object_change_method(update_obj_choice, obj_list);
 
+            // User's selected object will be picked via indexing
+            object_change_method(update_obj_choice, obj_list);
             break;
 
+        // Adding a new object via further menu system
         case 4:
         
             System.out.println(
@@ -237,10 +277,8 @@ class Main{
                 break;
             }
 
-            /* Do OBJ adding stuff */
+            // the user's object choice will then go on to select the appropriate functionality within add_new_object()
             add_new_object(new_object_choice, obj_list);
-
-            
             break;
 
         default:
@@ -253,6 +291,8 @@ class Main{
 
 
     /**
+        LOGIC SUMMARY:
+
         1.) Hard Code some objects from the cwd .java files: Language() & SinoTibetan() class objects are created
 
         2.) Store these objects in an ArrayList<Lanugage>. 
@@ -269,15 +309,15 @@ class Main{
     public static void main(String[] args){
 
         /**
-        Create the instanced objects, Mayan() and SinoTi
+        Create the instanced objects, Language(), Mayan(), and SinoTibetan()
          */
         Language hooplah = new Language("Hooplah", 500, "Bay Area, Deep Dirty South","noun, verb, subject.");
-        Language mopan = new Mayan("Mopan", 600);
+        Mayan mopan = new Mayan("Mopan", 600);
         SinoTibetan mandarin = new SinoTibetan("Mandarin Chinese", 122);
         SinoTibetan burmese = new SinoTibetan("Burmese", 333);
         
         
-        // Organize all objects in a Language ArrayList for organization and modularity throughout the script
+        // Organize all objects in a ArrayList<Language> for organization and modularity throughout the script
         // Declaring the data structure and then adding all the hard-coded Objects to it 
         ArrayList<Language> language_list = new ArrayList<Language>();
         language_list.add(hooplah);language_list.add(mopan); language_list.add(mandarin); language_list.add(burmese);
@@ -285,12 +325,13 @@ class Main{
         // var for the user's menu selection
         int user_choice = 0;
         
-        // Continuous Loop for user interface from Terminal
+        // Continuous Loop for user interface from Terminal; Change value of '5' each time new user-choices are added
         while(user_choice != 5){
 
             // main_menu() allows the user to choose functionality
             user_choice = main_menu();
 
+            // @note: Figure out how to '#define QUIT 5' as in C
             if(user_choice == 5){
                 System.out.println("\nHave a nice day.");
                 break;
