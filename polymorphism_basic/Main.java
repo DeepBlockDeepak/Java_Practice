@@ -23,6 +23,7 @@ class Main{
     }
 
 
+
     /**
     A simple line printer function
      */
@@ -198,6 +199,24 @@ class Main{
     
 
 
+    public static boolean delete_object(String obj_name, ArrayList<Language> lang_list){
+
+        boolean found_object = false;
+
+        for(Language lang_obj: lang_list){
+            if(lang_obj.name.equals(obj_name)){
+                found_object = !found_object;
+                lang_list.remove(lang_obj);
+                System.out.println(String.format("\t*%s was removed.", obj_name));
+            }
+        }
+
+        return found_object;
+        //System.out.println("")
+    }
+
+
+
     /**
         Ask user for choice. Return that int value for processing.
      */
@@ -209,7 +228,8 @@ class Main{
             "2.) Get Info of Entire List\n\t\t\t" +
             "3.) Update an Object's 'Regions Spoken' attribute.\n\t\t\t" +
             "4.) Add a new Object to the Language List.\n\t\t\t" +
-            "5.) QUIT\n\n"
+            "5.) Delete an Object in the Language List.\n\t\t\t" +
+            "6.) QUIT\n\n"
         );
 
         // Type conversion of the string output from Scanner to the Integer type
@@ -226,9 +246,12 @@ class Main{
     public static void inner_menu(int user_choice, ArrayList<Language> obj_list){
 
         // case 3, when the user wants to update an Obj attribute
-        int update_obj_choice;
         // for case 4, when the user wants to create a new Obj
-        int new_object_choice;
+        int object_choice;
+
+        // for case 5, when user wants to delete an Obj;
+        String deletion_object_name;
+
 
         switch(user_choice){
         // Where user wants to print each .name from the list of objects
@@ -253,15 +276,15 @@ class Main{
             // displays choices for the user via a List printed menu. 
             print_obj_names(obj_list);
             // User choice serves as an indexing value to select the appropriate object
-            update_obj_choice = Integer.valueOf(obtain_user_input());
+            object_choice = Integer.valueOf(obtain_user_input());
 
             // User's selected object will be picked via indexing
-            object_change_method(update_obj_choice, obj_list);
+            object_change_method(object_choice, obj_list);
             break;
 
         // Adding a new object via further menu system
         case 4:
-        
+
             System.out.println(
                 "\n\t\tWhich Object would you like to add?:\n\t\t\t" +
                 "1.) Language (parent Class) \n\t\t\t" +
@@ -270,17 +293,31 @@ class Main{
                 "4.) Back to Main Menu\n\n"
             );
 
-            new_object_choice = Integer.valueOf(obtain_user_input());
+            object_choice = Integer.valueOf(obtain_user_input());
             
             // exit the Object creation menu and kick back to the main menu
-            if(new_object_choice < 1 || new_object_choice > 3){
+            if(object_choice < 1 || object_choice > 3){
                 break;
             }
 
             // the user's object choice will then go on to select the appropriate functionality within add_new_object()
-            add_new_object(new_object_choice, obj_list);
+            add_new_object(object_choice, obj_list);
             break;
 
+        // Allow user to delete an object from the ArrayList<Language> based on a name search
+        case 5:
+            
+            System.out.println("\tType the name of the Language you wish to remove:");
+
+            deletion_object_name = obtain_user_input();
+            System.out.println(
+                delete_object(deletion_object_name, obj_list)   ?   "\t---Object Removed---"
+                                                                :   "\t---Object Not Found---"
+            );
+
+            break; 
+            
+        
         default:
             // POSSIBLY DO NOT NEED A BREAK WITHIN DEFAULT
             System.out.println("\t***Choice Must be between [1-5]\n");
@@ -322,17 +359,20 @@ class Main{
         ArrayList<Language> language_list = new ArrayList<Language>();
         language_list.add(hooplah);language_list.add(mopan); language_list.add(mandarin); language_list.add(burmese);
 
+        /* TEST */
+        //language_list.remove(mopan);
+
         // var for the user's menu selection
         int user_choice = 0;
         
         // Continuous Loop for user interface from Terminal; Change value of '5' each time new user-choices are added
-        while(user_choice != 5){
+        while(user_choice != 6){
 
             // main_menu() allows the user to choose functionality
             user_choice = main_menu();
 
             // @note: Figure out how to '#define QUIT 5' as in C
-            if(user_choice == 5){
+            if(user_choice == 6){
                 System.out.println("\nHave a nice day.");
                 break;
                 
