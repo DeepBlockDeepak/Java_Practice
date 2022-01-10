@@ -203,11 +203,20 @@ class Main{
 
         boolean found_object = false;
 
+        /* This method doesn't work
         for(Language lang_obj: lang_list){
             if(lang_obj.name.equals(obj_name)){
                 found_object = !found_object;
                 lang_list.remove(lang_obj);
                 System.out.println(String.format("\t*%s was removed.", obj_name));
+            }
+        }
+        */
+
+        for(int i = 0; i < lang_list.size(); i++){
+            if(lang_list.get(i).name.equals(obj_name)){
+                found_object = !found_object;
+                lang_list.remove(i);
             }
         }
 
@@ -310,9 +319,10 @@ class Main{
             System.out.println("\tType the name of the Language you wish to remove:");
 
             deletion_object_name = obtain_user_input();
+
             System.out.println(
-                delete_object(deletion_object_name, obj_list)   ?   "\t---Object Removed---"
-                                                                :   "\t---Object Not Found---"
+                delete_object(deletion_object_name, obj_list)   ?   String.format("\t---%s Removed---", deletion_object_name)
+                                                                :   String.format("\t---%s Not Found---", deletion_object_name)
             );
 
             break; 
