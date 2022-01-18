@@ -59,12 +59,20 @@ class Main{
         new_line_printer(1);
         System.out.println("The Languages are:\n");
         
+        /*
         // Print the object names
         for(int i = 0; i < obj_list.size(); i++){
             System.out.println(
                 "\t" + String.valueOf(i + 1) + ".) " + obj_list.get(i).name // modified from obj_list[i].name, after changing obj_list from Language[] type to ArrayList
             );
         }
+        */
+
+        // using a lambda expression instead of the above loop.
+        obj_list.forEach(
+            (temp) -> {System.out.println(temp.name);}
+        );
+        
     }
 
 
@@ -364,8 +372,10 @@ class Main{
         SinoTibetan burmese = new SinoTibetan("Burmese", 333);
         
         
-        // Organize all objects in a ArrayList<Language> for organization and modularity throughout the script
-        // Declaring the data structure and then adding all the hard-coded Objects to it 
+        /**
+        Organize all objects in a ArrayList<Language> for organization and modularity throughout the script
+        Declaring the data structure and then adding all the hard-coded Objects to it 
+        */
         ArrayList<Language> language_list = new ArrayList<Language>();
         language_list.add(hooplah);language_list.add(mopan); language_list.add(mandarin); language_list.add(burmese);
 
