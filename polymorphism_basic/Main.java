@@ -60,19 +60,21 @@ class Main{
         new_line_printer(1);
         System.out.println("The Languages are:\n");
         
-        /*
+        
         // Print the object names
         for(int i = 0; i < obj_list.size(); i++){
             System.out.println(
                 "\t" + String.valueOf(i + 1) + ".) " + obj_list.get(i).name // modified from obj_list[i].name, after changing obj_list from Language[] type to ArrayList
             );
         }
-        */
+        
 
+        /*
         // using a lambda expression instead of the above loop.
         obj_list.forEach(
             (temp) -> {System.out.println(temp.name);}
         );
+        */
         
     }
 
@@ -289,18 +291,18 @@ class Main{
 
         switch(user_choice){
         // Where user wants to print each .name from the list of objects
-        case 1:
+        case Constants.PRINT_NAMES:
             print_obj_names(obj_list);
             break;
         
         // Choosing to print off all attributes of every object in the list
-        case 2: 
+        case Constants.INFO_ALL: 
             //call this method to get all info
             get_all_info(obj_list);
             break;
 
         // Overwriting an existing object's .regionsSpoken attribute with new user-inputted material
-        case 3:
+        case Constants.UPDATE_REGIONS_SPOKEN:
 
             new_line_printer(2);
             System.out.println(
@@ -317,7 +319,7 @@ class Main{
             break;
 
         // Adding a new object via further menu system
-        case 4:
+        case Constants.ADD_NEW_OBJ:
 
             System.out.println(
                 "\n\t\tWhich Object would you like to add?:\n\t\t\t" +
@@ -339,7 +341,7 @@ class Main{
             break;
 
         // Allow user to delete an object from the ArrayList<Language> based on a name search
-        case 5:
+        case Constants.DELETE_OBJ:
             
             System.out.println("\tType the name of the Language you wish to remove:");
 
@@ -409,7 +411,7 @@ class Main{
             user_choice = main_menu();
 
             // @note: Figure out how to '#define QUIT 5' as in C
-            if(user_choice == 6){
+            if(user_choice == Constants.QUIT){
                 System.out.println("\nHave a nice day.");
                 break;
                 
