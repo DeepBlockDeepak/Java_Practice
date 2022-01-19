@@ -47,6 +47,7 @@ class Main{
 
         String user_input = myObj.nextLine();
 
+        
         return user_input;
 
     }
@@ -238,19 +239,35 @@ class Main{
         Ask user for choice. Return that int value for processing.
      */
     public static int main_menu(){
-        
-        System.out.println(
-            "\n\t\tWhat would you like to do:\n\t\t\t" +
-            "1.) Print the Object Names\n\t\t\t" +
-            "2.) Get Info of Entire List\n\t\t\t" +
-            "3.) Update an Object's 'Regions Spoken' attribute.\n\t\t\t" +
-            "4.) Add a new Object to the Language List.\n\t\t\t" +
-            "5.) Delete an Object in the Language List.\n\t\t\t" +
-            "6.) QUIT\n\n"
-        );
 
-        // Type conversion of the string output from Scanner to the Integer type
-        int user_choice = Integer.valueOf(obtain_user_input());
+        int user_choice;
+
+        // wrap the user-input menu in a while-true loop, to coax the correct integer input 
+        while(true){
+            System.out.println(
+                "\n\t\tWhat would you like to do:\n\t\t\t" +
+                "1.) Print the Object Names\n\t\t\t" +
+                "2.) Get Info of Entire List\n\t\t\t" +
+                "3.) Update an Object's 'Regions Spoken' attribute.\n\t\t\t" +
+                "4.) Add a new Object to the Language List.\n\t\t\t" +
+                "5.) Delete an Object in the Language List.\n\t\t\t" +
+                "6.) QUIT\n\n"
+            );
+    
+            // Type conversion of the string output from Scanner to the Integer type
+            // If the user didn't give an integer, the "catch" will loop back
+            try{
+                user_choice = Integer.valueOf(obtain_user_input());
+                break;
+            }
+            catch(Exception e){
+                System.out.println("\n\tInput must be an integer! Error : " + e.getMessage());
+                //System.out.println("\n\t**Input must be an integer!**");
+                continue;
+            }
+        
+        }
+        
         
         return user_choice;
 

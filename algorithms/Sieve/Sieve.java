@@ -9,15 +9,18 @@ class Sieve {
     
     // use for-loop to add index of `arr` elements to `result` that are `true` by calling `add()` method
     for(int i = 0; i < arr.length; i++){
-
-        if(arr[i]){
-            result.add(i);
-        }
+      //
+      if(arr[i]){
+          result.add(i);
+      }
 
     }
-
     // Print `result`
-    System.out.println(Arrays.toString(result.toArray()));
+    //System.out.println(Arrays.toString(result.toArray()));
+
+    result.forEach(
+    (temp) -> {System.out.print(temp);}
+    );
   }
 
   
