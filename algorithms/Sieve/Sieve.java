@@ -1,7 +1,15 @@
 import java.util.*;
 // class FindTrueIndices
 class Sieve {
-
+  
+  /**
+   * Ongoing work::::::::::
+   *
+   * @Critical This function doesn't interact with a return variable, so it should be modified this way. 
+   * Then, findTrueIndeces() can take the return array as a parameter, and print the corresponding boolean array from the existing logic   
+   * 
+   * @param limit the upperbound value of the user's inputted Sieve size
+   */
   void sieveOfEratosthenes(int limit){
     boolean output[] = new boolean[limit + 1];
 
