@@ -1,4 +1,4 @@
-public class RainWater {
+class RainWater {
 
   public int efficientSolution(int[]heights) {
     int totalWater = 0;
@@ -7,6 +7,26 @@ public class RainWater {
     int leftBound = 0;
     int rightBound = 0;
     // Fill in the rest of this method with your solution
+
+    while(leftPointer < rightPointer){
+      if(heights[leftPointer] <= heights[rightPointer]){
+        leftBound = Math.max(leftBound, heights[leftPointer]);
+        
+        totalWater += (leftBound - heights[leftPointer]);
+
+        leftPointer++;
+
+      }
+      else{
+        rightBound = Math.max(rightBound, heights[rightPointer]);
+
+        totalWater += (rightBound - heights[rightPointer]);
+
+        rightPointer--;
+
+      }
+    }
+
     
     return totalWater;
   }
