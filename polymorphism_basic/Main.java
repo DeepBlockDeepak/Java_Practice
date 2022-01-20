@@ -395,7 +395,7 @@ class Main{
         Organize all objects in a ArrayList<Language> for organization and modularity throughout the script
         Declaring the data structure and then adding all the hard-coded Objects to it 
         */
-        ArrayList<Language> language_list = new ArrayList<Language>();
+        ArrayList<Language> language_list = new ArrayList<>();
         language_list.add(hooplah);language_list.add(mopan); language_list.add(mandarin); language_list.add(burmese);
 
         /* TEST */
