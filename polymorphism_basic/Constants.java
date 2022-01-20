@@ -3,7 +3,7 @@
  */
 public class Constants{
 
-    // what is the reason for using 'static' or 'public' or 'final' ???
+    // what is the reason for using 'static'  ???
     public static final int PRINT_NAMES = 1;
     public static final int INFO_ALL = 2;
     public static final int UPDATE_REGIONS_SPOKEN = 3;
