@@ -7,73 +7,11 @@ class Sieve {
 
 
   /**
-   * @brief Creates a Boolean array where each index corresponds directly to that index's integer value i.e., the 5th index corresponds to
-   *        the integer 5. 
-   *        If integer n is prime, then output[n] will be assigned 'true'
    * 
-   * @param limit the upperbound value of the user's inputted Sieve size
-   * @return      returns the boolean array with correctly assigned Prime true/false values per the index value
+   * @param limit User defined. The HashMap will contain keys up to and including the user's limit value
+   * @return      Returns a HashMap with prime keys set to true, and composite keys set to false
    */
-  static boolean[] sieveOfEratosthenes(int limit){
-    // instantiate an boolean array which will map index values to prime/not-prime status
-    boolean output[] = new boolean[limit + 1];
-
-    // start with each element set to true, and hard code the compositeness off 0 and 1
-    for(int x = 0; x <= limit; x++){
-      output[x] = true;
-    }
-    output[0] = false; output[1] = false;
-
-    // perform the Sieve operation
-    for(int i = 2; i <= limit; i++){
-
-      // if a prime is encountered, decertify all of its multiples
-      if(output[i]){
-        for(int j = i*2; j <= limit; j += i){
-          output[j] = false;
-        }
-      }
-
-    }
-    return output;
-  }
-  
-
-
-  /**
-   * 
-   * @param arr for mapping int array values to corresponding values in second bool array for indicating 
-   *            prime(true)/composite(false) status
-   */
-  static void findTrueIndices(boolean[] arr) {
-    
-    // create `result` ArrayList
-    ArrayList<Integer> result = new ArrayList<>();
-    
-    // use for-loop to add index of `arr` elements to `result` that are `true` by calling `add()` method
-    for(int i = 0; i < arr.length; i++){
-  
-      if(arr[i]){
-          result.add(i);
-      }
-
-  }
-    
-    /**
-     * Are the following two commands distinguishable?
-     */
-    //System.out.println(result);
-    System.out.println(Arrays.toString(result.toArray()));
-
-    /*
-    result.forEach(
-      (temp) -> {System.out.print(temp);}
-    );
-    */
-  }
-
-
-  static void sieveArrayList(int limit){
+  static HashMap<Integer,Boolean> sieveHashMap(int limit){
 
     HashMap<Integer, Boolean> primeMap = new HashMap<>(limit + 1);
 
@@ -99,50 +37,75 @@ class Sieve {
 
     }
 
-    //System.out.println(primeMap.size());
-    /*
-    System.out.print("[");
-    primeMap.forEach((key,bool_val) -> {
-      System.out.print(
-        bool_val  ?  key + ", "
-                  : ""  
-      );
+    return primeMap;
 
-    });
+  }
+
+
+  /**
+   * 
+   * @param primeMap The HashMap with (int, bool) pairs; if an integer key is prime, then it's value will be true
+   */
+  static void sieveHashMapPrinter(HashMap<Integer, Boolean> primeMap){
+
+    
+    /**
+     * Returning list of valid primes by creating 2 new Sets.
+     * 'false_keys' stores only integers which are not primes
+     * 'primes' first contains all of the primeMap integers, then removes the 'false_keys' values
     */
+    Set<Integer> false_keys = new HashSet<>();
 
-    System.out.print("[");
-    primeMap.forEach((key, bool_val) -> {
+    for(Integer key : primeMap.keySet()){
+      if(!primeMap.get(key)){
+        false_keys.add(key);
+      }
+    }
 
-      if(key.equals(primeMap.size() - 1) && bool_val){
-        System.out.println(key + "]");
-      }
-      else if(key.equals(primeMap.size() - 1) && !bool_val){
-        System.out.println("]");
-      }
-      else if(bool_val){
-        System.out.print(String.format("%d, ", key));
-      }
-      else{
-        ;
-      }
+    Set<Integer> primes = primeMap.keySet();
 
-    });
+    primes.removeAll(false_keys);
 
-    //System.out.println("]");
+    System.out.println(primes);   
+    
+
+    /**
+     * Using Iterator to remove the key,value pairs 'in-place'
+     */
+    Iterator it = primeMap.entrySet().iterator();
+    while(it.hasNext()){
+      Map.Entry pair = (Map.Entry)it.next();
+      //Integer key = (Integer)pair.getKey();
+      Boolean value = (Boolean)pair.getValue();
+      if(!value){
+        it.remove();
+      }
+    }
+
+    System.out.println(primeMap.keySet());
 
   }
 
 
 
   public static void main(String[] args) {
+    
 
-    int sieve_limit = args.length < 1 ? 100
-                                      : Integer.valueOf(args[0]);
+    try{
+      
+      int sieve_limit = args.length < 1 ? 100
+                                        : Integer.valueOf(args[0]);
+      
 
-    //findTrueIndices(sieveOfEratosthenes(sieve_limit));
+      HashMap<Integer,Boolean> primeMap = sieveHashMap(sieve_limit);
 
-    sieveArrayList(sieve_limit);
+      sieveHashMapPrinter(primeMap);
+      
+    }
+
+    catch(NumberFormatException nfe){
+      System.out.println("\n\tInput must be an integer! Error : " + nfe.getMessage() + "\n");
+    }
 
   }
 }
