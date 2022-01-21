@@ -15,10 +15,10 @@ class Sieve {
 
     HashMap<Integer, Boolean> primeMap = new HashMap<>(limit + 1);
 
-    // first assign 'true' to each value in the primeMap, except for where i == 0 || i == 1
+    // first assign 'true' to each value in the primeMap, except for where i == 0 || i == 1, and all even values
     for(int i = 0; i <= limit; i++){
       //primeMap.put(i, true);
-      if(i == 0 || i == 1){
+      if( (i == 0) || (i == 1) || (i % 2 == 0 && i != 2) ){
         primeMap.put(i, false);  
       }
       else{
@@ -26,15 +26,14 @@ class Sieve {
       }
     }
 
-    for(int i = 2; i <= limit; i++){
+    for(int i = 2; i <= Math.sqrt(limit); i++){
 
       // if a prime is encountered, decertify all of its multiples
       if(primeMap.get(i)){
-        for(int j = i*2; j <= limit; j += i){
+        for(int j = (int)Math.pow(i, 2); j <= limit; j += i){
           primeMap.replace(j, false);
         }
       }
-
     }
 
     return primeMap;
