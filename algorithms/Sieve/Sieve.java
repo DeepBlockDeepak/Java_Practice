@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Performs the Sieve of Eratosthenes method for returning prime numbers up to a User's selected integer.
@@ -95,13 +97,11 @@ class Sieve {
       int sieve_limit = args.length < 1 ? 100
                                         : Integer.valueOf(args[0]);
       
-
       HashMap<Integer,Boolean> primeMap = sieveHashMap(sieve_limit);
 
       sieveHashMapPrinter(primeMap);
       
     }
-
     catch(NumberFormatException nfe){
       System.out.println("\n\tInput must be an integer! Error : " + nfe.getMessage() + "\n");
     }

@@ -405,12 +405,12 @@ class Main{
         int user_choice = 0;
         
         // Continuous Loop for user interface from Terminal; Change value of '5' each time new user-choices are added
-        while(user_choice != 6){
+        while(user_choice != Constants.QUIT){
 
             // main_menu() allows the user to choose functionality
             user_choice = main_menu();
 
-            // @note: Figure out how to '#define QUIT 5' as in C
+            
             if(user_choice == Constants.QUIT){
                 System.out.println("\nHave a nice day.");
                 break;
