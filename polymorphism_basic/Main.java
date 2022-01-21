@@ -170,11 +170,6 @@ class Main{
         Function handles the user's choice from the inner_menu option #4: creating a new Language() object or Child-class
      */
     public static void add_new_object(int obj_choice, ArrayList<Language> obj_list){
-        
-        // declare variables for the obj attributes
-        String name, regionsSpoken, wordOrder;
-        int numSpeakers;
-
 
         switch(obj_choice){
         
