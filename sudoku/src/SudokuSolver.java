@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.concurrent.TimeUnit;
+
 
 /**
  * Given a hard-coded sudoku board, this script provides a solution
@@ -25,13 +27,33 @@ public class SudokuSolver {
             {0, 0, 7, 0, 4, 0, 2, 0, 3}
         };
 
-        System.out.println("\n\n\t-----Initial Board-----\n\n");
+        System.out.println("\n\n\s-----Initial Board-----\n\n");
         BoardPrinter(board);
+        //TimeUnit.SECONDS.sleep(1);
+        //Thread.sleep(1000);
+
+        try{
+            Thread.sleep(1500);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
 
         // send the board to the solver
         if(solveBoard(board)){
-            System.out.println("\n\n\t-----Solution Found-----\n\n");
-            System.out.println("\n\n\t-----Solved Board-----\n\n");
+            System.out.println("\n\n\n\sSolution Exists!\n\n");
+            //TimeUnit.SECONDS.sleep(1);
+            //Thread.sleep(1000);
+            try{
+                Thread.sleep(1500);
+            }
+            catch(InterruptedException ex)
+            {
+                Thread.currentThread().interrupt();
+            }
+
+            System.out.println("\n\n\s-----Solved Board-----\n");
             BoardPrinter(board);
         } // Some boards are not possible to solve
         else{
