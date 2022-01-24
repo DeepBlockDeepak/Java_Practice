@@ -1,4 +1,4 @@
-import java.util.*
+import java.util.*;
 
 public class SudokuSolver {
 
@@ -19,10 +19,36 @@ public class SudokuSolver {
         };
 
         // send the board to the solver
-        solveBoard(board);
+        if(solveBoard(board)){
+            System.out.println("Solved");
+        }
+        else{
+            System.out.println("Not possible");
+        }
 
-        System.out.println(board);
-        //System.out.println(Arrays.deepToString(board));
+
+
+        /*
+        // TODO : figure out how to print a 2D Java Array in the following manner
+        for(int[] row : board){
+            System.out.println(row);
+        }
+        */
+
+        vanillaBoardPrinter(board);
+
+
+    }
+
+
+
+    public static void vanillaBoardPrinter(int[][] board){
+        for(int row = 0; row < GRID_SIZE; row++){
+            for(int col = 0; col < GRID_SIZE; col++){
+                System.out.print(board[row][col]);
+            }
+            System.out.println();
+        }
     }
 
 
@@ -107,11 +133,10 @@ public class SudokuSolver {
         for(int row = 0; row < GRID_SIZE; row++){
             for(int col = 0; col < GRID_SIZE; col++){
                 if(board[row][col] == 0){
-                    for(int numberToTry = 1; numberToTry <= GRID_SIZE; numberToTry++){
-                        if(isValidPlacement(board, numberToTry, row, col)){
-                            board[row][col] = numberToTry;
-
-
+                    for(int try_val = 1; try_val <= GRID_SIZE; try_val++){
+                        if(isValidPlacement(board, try_val, row, col)){
+                            board[row][col] = try_val;
+                            // Recursive Call here
                             if(solveBoard(board)){
                                 return true;
                             }
@@ -124,6 +149,7 @@ public class SudokuSolver {
                 }
             }
         }
+        return true;
     }
 
 
