@@ -22,6 +22,7 @@ public class SudokuSolver {
         solveBoard(board);
 
         System.out.println(board);
+        //System.out.println(Arrays.deepToString(board));
     }
 
 
