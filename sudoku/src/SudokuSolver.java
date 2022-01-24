@@ -1,11 +1,17 @@
 import java.util.*;
 
+/**
+ * Given a hard-coded sudoku board, this script provides a solution
+ */
 public class SudokuSolver {
 
+    // Constant Value for the size of the square dimensions
     private static final int GRID_SIZE = 9;
+
 
     public static void main(String[] args) {
 
+        // Hard-coded board
         int[][] board = {
             {7, 0, 2, 0, 5, 0, 6, 0, 0},
             {0, 0, 0, 0, 0, 3, 0, 0, 0},
@@ -18,33 +24,42 @@ public class SudokuSolver {
             {0, 0, 7, 0, 4, 0, 2, 0, 3}
         };
 
+        System.out.println("\n\n\t-----Initial Board-----\n\n");
+        BoardPrinter(board);
+
         // send the board to the solver
         if(solveBoard(board)){
-            System.out.println("Solved");
-        }
+            System.out.println("\n\n\t-----Solved-----\n\n");
+            System.out.println("\n\n\t-----Initial Board-----\n\n");
+            BoardPrinter(board);
+        } // Some boards are not possible to solve
         else{
             System.out.println("Not possible");
         }
-
-
-
-        /*
-        // TODO : figure out how to print a 2D Java Array in the following manner
-        for(int[] row : board){
-            System.out.println(row);
-        }
-        */
-
-        vanillaBoardPrinter(board);
-
 
     }
 
 
 
-    public static void vanillaBoardPrinter(int[][] board){
+    /**
+     *
+     * @param board -> The solved sudoku 2D list
+     */
+    public static void BoardPrinter(int[][] board){
+        System.out.println();
+
+        // Loop through entire 2D array in n^2 manner
         for(int row = 0; row < GRID_SIZE; row++){
+            // At each multiple of 3, the end of a block is encountered; pretty print to wall it off
+            // skip the top
+            if(row % 3 == 0){
+                System.out.println("-----------\n");
+            }
+            // Same wall idea but for the vertical walls of a block
             for(int col = 0; col < GRID_SIZE; col++){
+                if(col % 3 == 0){
+                    System.out.print("|");
+                }
                 System.out.print(board[row][col]);
             }
             System.out.println();
