@@ -29,8 +29,8 @@ public class SudokuSolver {
 
         // send the board to the solver
         if(solveBoard(board)){
-            System.out.println("\n\n\t-----Solved-----\n\n");
-            System.out.println("\n\n\t-----Initial Board-----\n\n");
+            System.out.println("\n\n\t-----Solution Found-----\n\n");
+            System.out.println("\n\n\t-----Solved Board-----\n\n");
             BoardPrinter(board);
         } // Some boards are not possible to solve
         else{
@@ -53,7 +53,7 @@ public class SudokuSolver {
             // At each multiple of 3, the end of a block is encountered; pretty print to wall it off
             // skip the top
             if(row % 3 == 0){
-                System.out.println("-----------\n");
+                System.out.println("\s-----------");
             }
             // Same wall idea but for the vertical walls of a block
             for(int col = 0; col < GRID_SIZE; col++){
