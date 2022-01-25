@@ -43,11 +43,10 @@ class Main{
     public static String obtain_user_input(){
 
         Scanner myObj = new Scanner(System.in);
-        //System.out.println(hard_coded_message);
 
         String user_input = myObj.nextLine();
 
-        
+    
         return user_input;
 
     }
