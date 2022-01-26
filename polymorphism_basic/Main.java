@@ -10,6 +10,68 @@ class Main{
 
 
     /**
+        LOGIC SUMMARY:
+
+        1.) Hard Code some objects from the cwd .java files: Language() & SinoTibetan() class objects are created
+
+        2.) Store these objects in an ArrayList<Lanugage>. 
+
+        3.) The while() loop allows the user to interact with a Menu that provides multiple options:
+            i.) View the object names within the ArrayList<Language> language_list
+            ii.) View the full information of the objects' attributes within the language_list
+            iii.) Modify the contents of the .regionsSpoken attribute of any chosen Object within the language_list
+            iv.) Add a new Object (along with entering it's attribute values) to the language_list.
+                    * note: this option takes the user to a new menu where they can choose which Class Object to create:
+                            Language(), Mayan(), or SinoTibetan() .... or to quit this option and return to main menu
+            v.) Quit the program   
+     */
+    public static void main(String[] args){
+
+        /**
+        Create the instanced objects, Language(), Mayan(), and SinoTibetan()
+         */
+        Language hooplah = new Language("Hooplah", 500, "Bay Area, Deep Dirty South","noun, verb, subject.");
+        Mayan mopan = new Mayan("Mopan", 600);
+        SinoTibetan mandarin = new SinoTibetan("Mandarin Chinese", 122);
+        SinoTibetan burmese = new SinoTibetan("Burmese", 333);
+        
+        
+        /**
+        Organize all objects in a ArrayList<Language> for organization and modularity throughout the script
+        Declaring the data structure and then adding all the hard-coded Objects to it 
+        */
+        ArrayList<Language> language_list = new ArrayList<>();
+        language_list.add(hooplah);language_list.add(mopan); language_list.add(mandarin); language_list.add(burmese);
+
+        /* TEST */
+        //language_list.remove(mopan);
+
+        // var for the user's menu selection
+        int user_choice = 0;
+        
+        // Continuous Loop for user interface from Terminal; Change value of '5' each time new user-choices are added
+        while(user_choice != Constants.QUIT){
+
+            // main_menu() allows the user to choose functionality
+            user_choice = main_menu();
+
+            
+            if(user_choice == Constants.QUIT){
+                System.out.println("\nHave a nice day.");
+                break;
+                
+            }
+
+            // inner_menu() processes the user's selection and directs the function to be performed.
+            inner_menu(user_choice, language_list);
+            
+        }      
+
+    }
+
+
+
+    /**
     get_all_info for calling .getInfo() method on each Language() object in the array
     */
     public static void get_all_info(ArrayList<Language> language_array){
@@ -43,11 +105,10 @@ class Main{
     public static String obtain_user_input(){
 
         Scanner myObj = new Scanner(System.in);
-        //System.out.println(hard_coded_message);
 
         String user_input = myObj.nextLine();
 
-        
+    
         return user_input;
 
     }
@@ -359,65 +420,6 @@ class Main{
 
 
 
-    /**
-        LOGIC SUMMARY:
-
-        1.) Hard Code some objects from the cwd .java files: Language() & SinoTibetan() class objects are created
-
-        2.) Store these objects in an ArrayList<Lanugage>. 
-
-        3.) The while() loop allows the user to interact with a Menu that provides multiple options:
-            i.) View the object names within the ArrayList<Language> language_list
-            ii.) View the full information of the objects' attributes within the language_list
-            iii.) Modify the contents of the .regionsSpoken attribute of any chosen Object within the language_list
-            iv.) Add a new Object (along with entering it's attribute values) to the language_list.
-                    * note: this option takes the user to a new menu where they can choose which Class Object to create:
-                            Language(), Mayan(), or SinoTibetan() .... or to quit this option and return to main menu
-            v.) Quit the program   
-     */
-    public static void main(String[] args){
-
-        /**
-        Create the instanced objects, Language(), Mayan(), and SinoTibetan()
-         */
-        Language hooplah = new Language("Hooplah", 500, "Bay Area, Deep Dirty South","noun, verb, subject.");
-        Mayan mopan = new Mayan("Mopan", 600);
-        SinoTibetan mandarin = new SinoTibetan("Mandarin Chinese", 122);
-        SinoTibetan burmese = new SinoTibetan("Burmese", 333);
-        
-        
-        /**
-        Organize all objects in a ArrayList<Language> for organization and modularity throughout the script
-        Declaring the data structure and then adding all the hard-coded Objects to it 
-        */
-        ArrayList<Language> language_list = new ArrayList<>();
-        language_list.add(hooplah);language_list.add(mopan); language_list.add(mandarin); language_list.add(burmese);
-
-        /* TEST */
-        //language_list.remove(mopan);
-
-        // var for the user's menu selection
-        int user_choice = 0;
-        
-        // Continuous Loop for user interface from Terminal; Change value of '5' each time new user-choices are added
-        while(user_choice != Constants.QUIT){
-
-            // main_menu() allows the user to choose functionality
-            user_choice = main_menu();
-
-            
-            if(user_choice == Constants.QUIT){
-                System.out.println("\nHave a nice day.");
-                break;
-                
-            }
-
-            // inner_menu() processes the user's selection and directs the function to be performed.
-            inner_menu(user_choice, language_list);
-            
-        }      
-
-    }
 
 }
 
