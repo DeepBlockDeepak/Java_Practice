@@ -6,21 +6,24 @@ public class Greeter {
         greeting.perform();
     }
 
+
     public static void main(String[] args) {
         Greeter greeter = new Greeter();
-        HelloWorldGreeting helloWorldGreeting = new HelloWorldGreeting();
-        greeter.greet(helloWorldGreeting);
 
-        myLambda myLambdaFunction = () -> System.out.println("Hello world!");
-        MyAdd addFunction = (int a, int b) -> a + b;
-        // left off in video 8 at 5:50
+        //Greeting helloWorldGreeting = new HelloWorldGreeting();
+        Greeting lambdaGreeting = () -> System.out.println("Hello world!");
+
+        Greeting innerClassGreeting = new Greeting(){
+            public void perform(){
+                System.out.println("Hello world!");
+            }
+        };
+
+        greeter.greet(lambdaGreeting);
+        greeter.greet(innerClassGreeting);
+
 
     }
 
-    interface myLambda {
-        void arbitrary_func();
-    }
-    interface MyAdd{
-        int arbitary_add_func(int x, int y);
-    }
 }
+
