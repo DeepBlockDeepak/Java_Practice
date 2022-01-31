@@ -43,7 +43,7 @@ public class Unit1ExerciseSolutionJava8 {
 
     // Step 3
     // TODO Note: built-in Predicate<T> allows the bypass of the Condition interface
-    public static void printConditionally(List<Person> people, Predicate<Person> condition){
+    public static void printConditionally(List<Person> people, Condition condition){
         for(Person p: people){
             if(condition.test(p)){
                 System.out.println(p);
