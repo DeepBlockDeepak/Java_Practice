@@ -35,7 +35,8 @@ public class Unit1ExerciseSolutionJava7 {
             public boolean test(Person p) {
                 return p.getLastName().startsWith("C");
             }
-        });System.out.println();
+        });
+        System.out.println();
 
     }
 

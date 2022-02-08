@@ -19,12 +19,14 @@ public class Unit1ExerciseSolutionJava8 {
         Collections.sort(people, (p1, p2) -> p1.getLastName().compareTo(p2.getLastName()));
         System.out.println("Printing the People() list, sorted by last name.");
         // Step 2 : using just one print function, with lambda returning true for every element
-        printConditionally(people, p -> true);System.out.println();
+        printConditionally(people, p -> true);
+        System.out.println();
 
 
         System.out.println("Printing only People() with last name starting with 'C'");
         // Step 3: Create a method that prints all people that have a last name beginning with 'C'
-        printConditionally(people, p -> p.getLastName().startsWith("C"));System.out.println();
+        printConditionally(people, p -> p.getLastName().startsWith("C"));
+        System.out.println();
 
         System.out.println("Printing only People() with first name starting with 'C'");
         printConditionally(people, p -> p.getFirstName().toLowerCase().startsWith("c"));

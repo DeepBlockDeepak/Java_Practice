@@ -19,21 +19,22 @@ public class StandardFunctionalInterfacesExample {
         // Step 1: Sort the people list by last name
         //Collections.sort(people, (o1, o2) -> o1.getLastName().compareTo(o2.getLastName()));
         Collections.sort(people, (p1, p2) -> p1.getLastName().compareTo(p2.getLastName()));
-        System.out.println("Printing the People() list, sorted by last name.");
+
         // Step 2 : using just one print function, with lambda returning true for every element
-        performConditionally(people, p -> true, p -> System.out.println(p));System.out.println();
+        System.out.println("Printing the People() list, sorted by last name.");
+        performConditionally(people, p -> true, p -> System.out.println(p));
+        System.out.println();
 
-
-        System.out.println("Printing only People() with last name starting with 'C'");
         // Step 3: Create a method that prints all people that have a last name beginning with 'C'
-        performConditionally(people, p -> p.getLastName().startsWith("C"), p -> System.out.println(p) );System.out.println();
+        System.out.println("Printing only People() with last name starting with 'C'");
+        performConditionally(people, p -> p.getLastName().startsWith("C"), p -> System.out.println(p) );
+        System.out.println();
 
         System.out.println("Printing only People() with first name starting with 'C'");
         performConditionally(people, p -> p.getFirstName().toLowerCase().startsWith("c"), p -> System.out.println(p.getFirstName()) );
 
 
     }
-
 
     // Step 3
     // TODO Note: built-in Predicate<T> allows the bypass of the Condition interface
@@ -44,6 +45,7 @@ public class StandardFunctionalInterfacesExample {
             }
         }
     }
+
 
 }
 

@@ -3,6 +3,10 @@ package java8lambdabasics;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * This exercise is solved in the Unit1ExerciseSolutionJava7/8 files
+ */
+
 public class Unit1Exercise {
 
     public static void main(String[] args) {

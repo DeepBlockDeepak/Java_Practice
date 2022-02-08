@@ -6,7 +6,7 @@ public class ExceptionHandlingExample {
         int[] someNumbers = {1,2,3,4};
         int key = 2;
 
-        process(someNumbers, key,);
+        //process(someNumbers, key,);
 
     }
 }
