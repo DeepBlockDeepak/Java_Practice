@@ -18,6 +18,18 @@ public class ExceptionHandlingExample {
 
 
         // TODO NOTE: How to Catch Exception when key = 0 for Division?
+        /* Previous method involved implementing the Try/Catch within the Lambda like so:
+        {
+            try{
+                System.out.println(i / k);
+            }
+            catch(ArithmeticException e){
+                System.out.println(e.getMessage() + " Ya fuckin ding dong, you can't divide by 0");
+            }
+        }
+         */
+
+
         process(someNumbers, key, wrapperLambda((i, k) -> System.out.println(i/k)));
 
     }
@@ -30,8 +42,16 @@ public class ExceptionHandlingExample {
     }
 
     private static BiConsumer<Integer, Integer> wrapperLambda(BiConsumer<Integer, Integer> consumer){
+        return (v,k) -> {
+            try{
+                consumer.accept(v,k);
+            }
+            catch(ArithmeticException e){
+                System.out.println(e.getMessage() + " Error Caught in the WrapperLambda");
+            }
 
-        return consumer;
+        };
+
     }
 
 

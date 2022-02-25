@@ -23,7 +23,7 @@ public class StandardFunctionalInterfacesExample {
 
         // Step 2 : using just one print function, with lambda returning true for every element
         System.out.println("Printing the People() list, sorted by last name.");
-        performConditionally(people, p -> true, p -> System.out.println(p));
+        performConditionally(people, p -> true, System.out::println);
         System.out.println();
 
         // Step 3: Create a method that prints all people that have a last name beginning with 'C'
