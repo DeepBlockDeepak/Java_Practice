@@ -10,26 +10,24 @@ public class ExceptionHandlingExample {
 
     public static void main(String[] args) {
         int[] someNumbers = {1,2,3,4};
-        int key = 0; // TODO NOTE: How to Catch Exception when key = 0?
+        int key = 0;
 
         // Using Addition
-        process(someNumbers, key, (i, k) -> System.out.println(i + k));
+        process(someNumbers, key, (i, k) -> {
+
+            {
+                try{
+                    System.out.println(i / k);
+                }
+                catch(ArithmeticException e){
+                    System.out.println(e.getMessage() + " Ya fuckin ding dong, you can't divide by 0");
+                }
+            }
+        });
         System.out.println();
 
 
-        // TODO NOTE: How to Catch Exception when key = 0 for Division?
-        /* Previous method involved implementing the Try/Catch within the Lambda like so:
-        {
-            try{
-                System.out.println(i / k);
-            }
-            catch(ArithmeticException e){
-                System.out.println(e.getMessage() + " Ya fuckin ding dong, you can't divide by 0");
-            }
-        }
-         */
-
-
+        /* USE THE WRAPPER LAMBDA TO BETTER HANDLE THE TRY/CATCH */
         process(someNumbers, key, wrapperLambda((i, k) -> System.out.println(i/k)));
 
     }

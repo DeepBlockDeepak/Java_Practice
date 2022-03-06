@@ -37,6 +37,9 @@ public class Unit1ExerciseSolutionJava7 {
             }
         });
         System.out.println();
+
+
+        System.out.println("zazkk".compareTo("z"));
         
 
     }

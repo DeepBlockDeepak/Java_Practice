@@ -38,7 +38,7 @@ public class StandardFunctionalInterfacesExample {
     }
 
     // Step 3
-    // TODO Note: built-in Predicate<T> allows the bypass of the Condition interface
+    // TODO Note: built-in Predicate<T> allows the bypass of the Condition interface!!!!! <-----*****
     public static void performConditionally(List<Person> people, Predicate<Person> predicate, Consumer<Person> consumer){
         for(Person p: people){
             if(predicate.test(p)){

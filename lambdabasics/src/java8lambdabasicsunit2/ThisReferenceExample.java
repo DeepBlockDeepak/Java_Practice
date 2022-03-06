@@ -10,7 +10,20 @@ public class ThisReferenceExample {
 
         ThisReferenceExample thisReferenceExample = new ThisReferenceExample();
 
-        thisReferenceExample.doProcess();
+        /* TODO: left off here, don't know what the plan was. */
+        thisReferenceExample.doProcess(5, p -> System.out.println(p));
+
+        thisReferenceExample.doProcess(10, new Process() {
+            @Override
+            public void process(int i) {
+                System.out.printf("Value of i is %d\n", i);
+                System.out.println(this);
+            }
+
+            public String toString(){
+                return "This is the anonymous inner class";
+            }
+        });
 
 
     }
