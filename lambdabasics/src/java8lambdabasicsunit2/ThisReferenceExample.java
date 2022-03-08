@@ -1,5 +1,10 @@
 package java8lambdabasicsunit2;
 
+/*
+TODO Check out video 20 for the final ideas here
+ */
+
+
 public class ThisReferenceExample {
     // Process from ClosuresExample.java
     public void doProcess(int i, Process p){
